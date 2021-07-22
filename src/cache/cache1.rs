@@ -11,7 +11,7 @@ pub fn keyed(a: String, b: String) -> usize {
 
 pub fn keys() {
     let cache = KEYED.lock().unwrap();
-    cache.key_order().for_each(|key| println!("{:?}", key));
+    cache.key_order().for_each(|key| println!("keys from cache1: {:?}", key));
 }
 
 pub fn invalidate(a: String, b: String) {
@@ -20,4 +20,6 @@ pub fn invalidate(a: String, b: String) {
     let mut cache = KEYED.lock().unwrap();
     let key = (a, b);
     cache.cache_remove(&key);
+
+    println!("invalidate cache1 by key: {:?}", &key);
 }
